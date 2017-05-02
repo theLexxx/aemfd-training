@@ -23,14 +23,6 @@
     <version>1.0-SNAPSHOT</version>
     <description>aemfd</description>
 
-    <modules>
-        <module>core</module>
-        <module>ui.apps</module>
-        <module>ui.content</module>
-        <module>it.tests</module>
-        <module>it.launcher</module>
-    </modules>
-
     <properties>
         <aem.host>localhost</aem.host>
         <aem.port>4502</aem.port>
@@ -358,26 +350,49 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <!--<plugin>-->
-                        <!--<groupId>com.day.jcr.vault</groupId>-->
-                        <!--<artifactId>content-package-maven-plugin</artifactId>-->
-                        <!--<executions>-->
-                            <!--<execution>-->
-                                <!--<id>install-package</id>-->
-                                <!--<goals>-->
-                                    <!--<goal>install</goal>-->
-                                <!--</goals>-->
-                            <!--</execution>-->
-                        <!--</executions>-->
-                        <!--<configuration>-->
-                            <!--<targetURL>http://${aem.host}:${aem.port}/crx/packmgr/service.jsp</targetURL>-->
-                            <!--<failOnError>true</failOnError>-->
-                            <!--<failOnMissingEmbed>true</failOnMissingEmbed>-->
-                        <!--</configuration>-->
-                    <!--</plugin>-->
                 </plugins>
-
             </build>
+
+            <modules>
+                <module>core</module>
+                <module>ui.apps</module>
+                <module>ui.content</module>
+                <module>it.tests</module>
+                <module>it.launcher</module>
+            </modules>
+
+        </profile>
+
+        <profile>
+            <id>localhost-without-content</id>
+
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.sling</groupId>
+                        <artifactId>maven-sling-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>install-bundle</id>
+                                <goals>
+                                    <goal>install</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core</module>
+                <module>ui.apps</module>
+                <module>it.tests</module>
+                <module>it.launcher</module>
+            </modules>
 
         </profile>
     </profiles>
