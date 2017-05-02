@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/apps/aemfd">
-        <exclude pattern="/apps/aemfd/install" />
+        <exclude pattern="/apps/aemfd/install"/>
     </filter>
-    <filter root="/apps/sling" />
+    <filter root="/apps/sling"/>
+
     <filter root="/etc/designs/aemfd"/>
+    <filter root="/etc/clientlibs/common"/>
 </workspaceFilter>
